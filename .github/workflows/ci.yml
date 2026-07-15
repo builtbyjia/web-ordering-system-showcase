@@ -1,0 +1,30 @@
+# CI：push／PR 時自動檢查程式碼品質。
+# 三關：依賴安裝 → ESLint 風格檢查 → 建置（build 內含 tsc -b 型別檢查）。
+# 註：遠端 repo 建立後即自動生效；測試框架定案後在最後補一步 npm test。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 安裝依賴
+        run: npm ci
+
+      - name: ESLint 檢查
+        run: npm run lint
+
+      - name: 型別檢查＋建置
+        run: npm run build

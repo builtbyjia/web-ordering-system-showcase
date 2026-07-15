@@ -1,0 +1,59 @@
+// ============================================================
+// Bootstrap 變數覆寫 — My Way 燒雞蛋糕「現烤暖光」主題
+// ------------------------------------------------------------
+// 視覺方向甲（階段四 v0.2 定案）：奶油暖底 × 燒陶橘 × 焦糖棕，
+// pill 全圓、飽滿柔軟，呼應剛出爐雞蛋糕的暖手感。
+// 色階源自 Stitch 產出的 designMd：
+//   docs/研究報告/階段四-視覺探索/甲-現烤暖光-designMd.md
+// 注意：本檔須在匯入 bootstrap 本體「之前」載入才會生效。
+// ============================================================
+
+// --- 色彩：暖光色盤（取梅納反應與奶油麵糊意象）---
+$primary:   #b8430f; // 主色：燒陶橘（terracotta，關鍵動作與品牌熱度）
+$secondary: #8d4f11; // 次要：焦糖棕
+$success:   #2f7d5d; // 成功：抹茶綠（點綴）
+$info:      #8d4f11; // 資訊沿用焦糖，避免框架罐頭藍
+$warning:   #c98a00; // 提示：琥珀
+$danger:    #ba1a1a; // 錯誤：正紅
+$light:     #fbf3e2; // 暖奶油（淺層、卡片底）
+$dark:      #1e1b11; // 暖黑（近純黑、帶暖）
+
+$body-bg:    #fff9ee; // 頁面底：奶油白（比純白更暖）
+$body-color: #1e1b11; // 內文：暖黑
+
+// --- 字型：拉丁/數字用 Plus Jakarta Sans（圓潤幾何），中文用 Huninn（jf open 粉圓）---
+// 字型堆疊會逐字元挑選：英數落在 Plus Jakarta Sans，中文落在 Huninn，達成暖圓一致。
+$font-family-sans-serif: 'Plus Jakarta Sans', 'Huninn', system-ui, -apple-system,
+  'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', sans-serif;
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 700;
+
+// --- 形狀：pill 全圓 + 大圓角卡片（呼應雞蛋糕圓模）---
+$border-radius:    1rem;
+$border-radius-sm: 0.5rem;
+$border-radius-lg: 1.5rem;
+$border-radius-xl: 2rem;
+
+// 按鈕：飽滿 pill，垂直 padding 略大顯「膨起」
+$btn-border-radius:    50rem;
+$btn-border-radius-sm: 50rem;
+$btn-border-radius-lg: 50rem;
+$btn-padding-y:        0.7rem;
+$btn-padding-x:        1.6rem;
+$btn-font-weight:      600;
+
+// 卡片：大圓角、無硬邊、暖白底
+$card-border-radius: 1.5rem;
+$card-border-width:  0;
+$card-bg:            #fffdf8;
+
+// 輸入框：pill、柔奶油底、focus 燒陶橘
+$input-border-radius:      50rem;
+$input-border-radius-lg:   50rem;
+$input-bg:                 #fffdf8;
+$input-border-color:       #e0c0b5;
+$input-focus-border-color: #b8430f;
+
+// 連結
+$link-decoration:       none;
+$link-hover-decoration: underline;

@@ -1,0 +1,10 @@
+// 樣式進入點
+// 匯入順序很重要：
+// 1) Bootstrap 函式（讓後續可使用其色彩等函式）
+// 2) 自訂變數覆寫（必須在 bootstrap 本體之前）
+// 3) Bootstrap 本體（會套用上面的變數覆寫）
+// 4) 自訂設計層（CSS 變數、動態、背景氛圍）
+@import 'bootstrap/scss/functions';
+@import 'variables';
+@import 'bootstrap/scss/bootstrap';
+@import 'theme';

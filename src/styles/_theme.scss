@@ -1,0 +1,73 @@
+// ============================================================
+// 自訂設計層（Design Layer）— My Way「現烤暖光」
+// ------------------------------------------------------------
+// 在 Bootstrap 之上疊：暖光色 token、字型細節、蒸氣暖光背景、
+// pill 元件微互動。這是讓畫面「剛出爐、暖手」的靈魂層。
+// ============================================================
+
+:root {
+  // 暖光色 token（元件內以 var(--mw-xxx) 取用）
+  --mw-cream:      #fff9ee; // 奶油底
+  --mw-butter:     #fbf3e2; // 奶油卡層
+  --mw-sand:       #f5eddc; // 更深一階容器
+  --mw-clay:       #b8430f; // 燒陶橘（主）
+  --mw-clay-deep:  #932f00; // 深燒陶（文字型主色、hover）
+  --mw-caramel:    #8d4f11; // 焦糖棕
+  --mw-honey:      #feac67; // 蜜糖橘（點綴、badge 底）
+  --mw-cocoa:      #1e1b11; // 可可暖黑（內文）
+  --mw-cocoa-soft: #58423a; // 次要文字
+  --mw-matcha:     #2f7d5d; // 抹茶綠（點綴）
+
+  // 暖光陰影（Glow Shadow：染主色而非灰）
+  --mw-shadow-glow: 0 14px 34px -18px rgba(184, 67, 15, 0.28);
+  --mw-shadow-soft: 0 8px 20px -12px rgba(31, 27, 17, 0.20);
+  --mw-transition:  200ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+// 整體版面：奶油底疊「蒸氣暖光」放射漸層，避免死板純色
+body {
+  background-color: var(--mw-cream);
+  background-image:
+    radial-gradient(1100px 520px at 100% -8%, rgba(184, 67, 15, 0.07), transparent 60%),
+    radial-gradient(820px 460px at -10% 6%, rgba(254, 172, 103, 0.10), transparent 55%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+// 標題：緊字距顯「飽滿」，如發得好的蛋糕
+h1, h2, h3, .display-font {
+  letter-spacing: -0.01em;
+}
+
+// 按鈕 pill 微互動：hover 輕浮起，主鈕帶暖光
+.btn {
+  transition: transform var(--mw-transition), box-shadow var(--mw-transition),
+    background-color var(--mw-transition);
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-primary:hover {
+  box-shadow: var(--mw-shadow-glow);
+}
+
+// 卡片：暖底、hover 膨起帶暖光
+.card {
+  transition: transform var(--mw-transition), box-shadow var(--mw-transition);
+}
+
+// 頁面載入交錯淡入：元素加 class="reveal"，以 inline style 設 animation-delay
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: reveal-up 0.6s both; }
+
+// 無障礙：尊重使用者「減少動態」的系統偏好
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

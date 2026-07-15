@@ -1,0 +1,9 @@
+{
+  // TypeScript 專案參照（Project References）進入點：
+  // 應用程式碼與 Node 設定檔分開編譯，各自套用合適的環境設定。
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}

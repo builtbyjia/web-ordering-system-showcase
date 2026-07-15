@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 環境變數（保留 .env.example 作為範本）
+.env
+.env.*
+!.env.example
+
+# Claude Code 個人本地設定
+.claude/settings.local.json
+
+# DB 相關
+apps/server/data/
+apps/server/data/sessions/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.log
+
+apps/web/dist/
+.vite/
+
+# 密鑰 / 憑證
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json

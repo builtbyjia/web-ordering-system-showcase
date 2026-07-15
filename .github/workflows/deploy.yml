@@ -1,0 +1,56 @@
+# 部署到 GitHub Pages：push 到 main 後自動建置並發布。
+# 首次需於 repo Settings → Pages → Source 選擇「GitHub Actions」。
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# 授予 GITHUB_TOKEN 部署 Pages 所需權限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時間只跑一個部署，取消進行中的舊部署
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 安裝 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: 安裝依賴
+        run: npm ci
+
+      - name: 建置（含 tsc 型別檢查與 404.html SPA fallback）
+        run: npm run build
+
+      - name: 設定 Pages
+        uses: actions/configure-pages@v5
+
+      - name: 上傳建置產物（dist）
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
