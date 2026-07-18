@@ -6,7 +6,7 @@
 > 🔎 **關於本 repo**：這是**前端展示版**，作為需求 demo 與作品集使用。資料以瀏覽器 localStorage
 > 模擬（無真實後端），店家聯絡資訊為脫敏佔位值。程式碼版權保留，歡迎閱讀參考，其他用途請先聯繫。
 
-🔗 **線上 Demo**：`https://<你的帳號>.github.io/web-ordering-system-showcase/`
+🔗 **線上 Demo**：`https://builtbyjia.github.io/web-ordering-system-showcase/`
 
 ## 技術棧
 
